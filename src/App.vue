@@ -6,9 +6,10 @@
  
 <script>
 export default {
-  name: 'app'
-}
+  name: "app",
+};
 </script>
  
-<style>
+<style lang="scss" scoped>
+@import url(@/assets/css/common.scss);
 </style>

@@ -1,16 +1,10 @@
 <template>
-  <div>
-    首页
-  </div>
+  <van-button type="primary">主要按钮</van-button>
 </template>
 
 <script>
-import {defineComponent } from 'vue'
-export default defineComponent({
-
-})
+import { defineComponent } from "vue";
+export default defineComponent({});
 </script>
 
-<style>
-
-</style>
+<style lang="scss" scoped></style>
