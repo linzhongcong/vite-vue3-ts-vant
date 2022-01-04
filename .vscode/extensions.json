@@ -1,0 +1,17 @@
+{
+  "vue": {
+    "prefix": "vue-ts", // 快捷指令
+    "body": [
+      "<template>\n",
+      "</template>\n",
+      "<script lang='ts'>",
+      "import { defineComponent } from 'vue'\n",
+      "export default defineComponent({",
+      "})\n",
+      "</script>\n",
+      "<style lang='scss' scoped>\n",
+      "</style>\n"
+    ],
+    "description": "Vue Template"
+  }
+}
