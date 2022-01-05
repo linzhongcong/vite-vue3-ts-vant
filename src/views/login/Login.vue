@@ -1,12 +1,11 @@
 <template>
-  <div>我的</div>
+  <div>登录</div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>
 </style>
-
