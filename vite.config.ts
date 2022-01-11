@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue()],
   // 配置端口
   server: {
-    port: 9000,
+    port: 8080,
     open: true,
     cors: true, //允许跨域
   },
