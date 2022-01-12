@@ -12,7 +12,7 @@ export default defineComponent({
     })
     let getHome = () =>{
       homeSwript().then(res => {
-        console.log(res);
+        // console.log(res);
       })
     }
   },
