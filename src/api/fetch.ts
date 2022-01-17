@@ -41,7 +41,7 @@ export function request(config) {
 
   // 响应拦截 (发送成功，回显数据)
   instance.interceptors.request.use(res => {
-    return res
+    return res.data
   }, err => {
     console.log(err);
   })

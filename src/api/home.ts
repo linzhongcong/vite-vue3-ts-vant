@@ -1,6 +1,6 @@
 import { fetch, request } from './fetch';
 
-export function homeSwript() {
+export function homeMultidata() {
   return fetch({
     url: "/home/multidata"
   })

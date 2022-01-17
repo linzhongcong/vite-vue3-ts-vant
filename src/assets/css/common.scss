@@ -20,6 +20,8 @@ a {
 	transition: color .3s;
 }
 
+$theme-colors: #ff8198;
+
 
 /* 滚动条凹槽的颜色，还可以设置边框属性 */
 *::-webkit-scrollbar-track-piece {
