@@ -1,23 +1,16 @@
 <template>
   <div id="app">
-    <tabBar v-show="userInfo"/>
+    <tabBar />
     <router-view />
   </div>
 </template>
  
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import tabBar from "@/components/tabbar.vue";
 export default defineComponent({
   name: "app",
   components: { tabBar },
-  setup(){
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-    
-    return {
-      userInfo
-    }
-  }
 });
 </script>
  

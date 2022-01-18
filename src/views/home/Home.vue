@@ -5,33 +5,25 @@
 
     <!-- 轮播 -->
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-      <van-swipe-item>1</van-swipe-item>
-      <van-swipe-item>2</van-swipe-item>
-      <van-swipe-item>3</van-swipe-item>
-      <van-swipe-item>4</van-swipe-item>
+      <van-swipe-item v-for="item in swiper" :key="item.link">
+        <img :src="item.image" class="swiper-item">
+      </van-swipe-item>
     </van-swipe>
+
+    <div class="box"></div>
   </div>
 </template>
 
-<script>
-import { defineComponent, getCurrentInstance, onMounted, ref } from "vue";
-import { homeMultidata } from '@/api/home.ts';
+<script lang="ts">
+import { defineComponent, getCurrentInstance, onMounted, ref, toRefs } from "vue";
+import Request from './request'
 
 export default defineComponent({
   setup() {
-    onMounted(() => {
-      gethomeMultidata()
-    })
-     
-    const swiperData = ref([])
-    const gethomeMultidata = () => {
-      homeMultidata().then(res => {
-        let {status, data:{data:{banner}}} = res
-        if(status === 200) {
-          swiperData.value = banner.list
-          console.log(swiperData.value);
-        }
-      })
+    let gather = Request.homeGatherData()
+    
+    return {
+      ...toRefs(gather)
     }
   },
 });
@@ -41,6 +33,15 @@ export default defineComponent({
 #home {
   :deep(.van-nav-bar__content) {
     background-color: #ff8198;
+  }
+  .swiper-item {
+    width: 100%;
+    height: 4rem;
+  }
+  .box {
+    width: 2rem;
+    height: 1.3333rem;
+    background-color: #000;
   }
 }
 </style>
