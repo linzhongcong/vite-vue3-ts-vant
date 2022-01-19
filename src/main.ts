@@ -14,4 +14,3 @@ app.mount("#app");
 
 // axios是一个库，并不是vue中的第三方插件，使用时不能通过Vue.use()安装插件，需要在原型上进行绑定
 app.config.globalProperties.$api = axios
-

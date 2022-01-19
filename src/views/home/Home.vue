@@ -10,7 +10,14 @@
       </van-swipe-item>
     </van-swipe>
 
-    <div class="box"></div>
+    <div class="recommend">
+      <div v-for="item in recommend" :key="item.sort" class="recommend-item">
+        <img :src="item.image" />
+        <p>{{item.title}}</p>
+      </div>
+    </div>
+
+    <img src="@/assets/img/recommend_bg.jpg" style="width: 101%; height: 5rem"/>
   </div>
 </template>
 
@@ -20,7 +27,9 @@ import Request from './request'
 
 export default defineComponent({
   setup() {
+    // ----------------------------------请求回来的数据----------------------------------
     let gather = Request.homeGatherData()
+    
     
     return {
       ...toRefs(gather)
@@ -33,15 +42,33 @@ export default defineComponent({
 #home {
   :deep(.van-nav-bar__content) {
     background-color: #ff8198;
+    height: .5867rem;
+    .van-nav-bar__title{
+      font-size: .2133rem;
+    }
   }
   .swiper-item {
     width: 100%;
     height: 4rem;
   }
-  .box {
-    width: 2rem;
-    height: 1.3333rem;
-    background-color: #000;
+
+  .recommend{
+    width: 100%;
+    height: 1.8667rem;
+    padding: .2667rem 0;
+    border-bottom: .1333rem solid #eee;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    .recommend-item{
+      text-align: center;
+      img{
+        width: .8667rem;
+        height: .8667rem;
+      }
+    }
   }
 }
 </style>
