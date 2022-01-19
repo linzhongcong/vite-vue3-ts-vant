@@ -30,7 +30,10 @@ import { defineComponent, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 export default defineComponent({
   setup(){
-    const userInfo = reactive({})
+    const userInfo = reactive({
+      account:'',
+      password:''
+    })
     const router = useRouter()
 
     const submitUserInfo = () => {
