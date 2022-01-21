@@ -1,25 +1,18 @@
 import { homeMultidata } from '@/api/home';
 import { reactive } from 'vue'
-
-interface Swiper {
+interface Gather {
   image: string,
-  title: string
-  [props: string]: any
-}
-
-interface Recommend {
-  image: string,
-  link: string
+  title?: string,
+  link?: string
   [props: string]: any
 }
 
 const request = {
   homeGatherData() {
     const gather = reactive({
-      swiper: [] as Swiper[],
-      recommend: [] as Recommend[]
+      swiper: [] as Gather[],
+      recommend: [] as Gather[]
     })
-  
     homeMultidata().then(res => {
       const { status, data:{data}} = res
       if(status === 200) {

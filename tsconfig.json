@@ -23,6 +23,9 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "typeRoots": [
+			"src/globalDeclare"
+		],
     // 编译过程中需要引入的库文件的列表
     "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
   },

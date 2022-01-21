@@ -4,7 +4,7 @@
     <van-nav-bar title="乐购"/>
 
     <!-- 轮播 -->
-    <!-- <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="item in swiper" :key="item.link">
         <img :src="item.image" class="swiper-item">
       </van-swipe-item>
@@ -15,22 +15,22 @@
         <img :src="item.image" />
         <p>{{item.title}}</p>
       </div>
-    </div> -->
+    </div>
 
     <img src="@/assets/img/recommend_bg.jpg" style="width: 101%; height: 5rem"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, onMounted, reactive, ref, toRefs } from "vue";
-// import Request from './request'
+import { defineComponent, toRefs } from "vue";
+import Request from './request'
 
 export default defineComponent({
   setup() {
-    // ----------------------------------请求回来的数据----------------------------------
 
     return {
-      // ...toRefs(Request.homeGatherData())
+      // 请求数据 - 轮播图、推荐
+      ...toRefs(Request.homeGatherData())
     }
   },
 });
