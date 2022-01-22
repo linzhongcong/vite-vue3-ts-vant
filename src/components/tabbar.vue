@@ -40,9 +40,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-  .navbar{
-    :deep(.van-tabbar){
-      height: .6533rem;
-    }
-  }
+  // .navbar{
+  //   :deep(.van-tabbar){
+  //     height: .6533rem;
+  //   }
+  // }
 </style>

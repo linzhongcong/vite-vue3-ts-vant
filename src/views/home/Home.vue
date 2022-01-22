@@ -40,10 +40,7 @@ export default defineComponent({
 #home {
   :deep(.van-nav-bar__content) {
     background-color: #ff8198;
-    height: .5867rem;
-    .van-nav-bar__title{
-      font-size: .2133rem;
-    }
+    height: 44px;
   }
   .swiper-item {
     width: 100%;
