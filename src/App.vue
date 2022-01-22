@@ -16,4 +16,7 @@ export default defineComponent({
  
 <style lang="scss" scoped>
 @import url(@/assets/css/common.scss);
+#app{
+    padding: 1.1733rem 0 1.3067rem 0;
+}
 </style>

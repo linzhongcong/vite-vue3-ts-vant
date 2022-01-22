@@ -1,8 +1,17 @@
 import { fetch, request } from './fetch';
 
-export function homeMultidata() {
+//轮播图以及推荐数据
+export function getHomeMultidata() {
   return fetch({
     url: "/home/multidata"
+  })
+}
+
+//流行、新款、精选的数据
+export function getHomeGoods(params:{type: string, page: number}) {
+  return fetch({
+    url: "/home/data",
+    params
   })
 }
 

@@ -1,4 +1,4 @@
-import { homeMultidata } from '@/api/home';
+import { getHomeMultidata, getHomeGoods } from '@/api/home';
 import { reactive } from 'vue'
 interface Gather {
   image: string,
@@ -13,7 +13,7 @@ const request = {
       swiper: [] as Gather[],
       recommend: [] as Gather[]
     })
-    homeMultidata().then(res => {
+    getHomeMultidata().then(res => {
       const { status, data:{data}} = res
       if(status === 200) {
         gather.swiper = data.banner.list;
@@ -21,6 +21,19 @@ const request = {
       }
     })
     return gather
+  },
+
+  homeGoodList(params: {type: string, page: number}, tabsData: {}) {    
+    console.log(params.type);
+    
+    getHomeGoods(params).then(res => {
+      const {status, data:{data}} = res
+      if(status === 200) {
+        tabsData[params.type].list = data.list
+      }
+      console.log(tabsData);
+      
+    })
   }
 }
 

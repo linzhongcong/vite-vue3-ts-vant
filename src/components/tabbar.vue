@@ -14,7 +14,7 @@
         >我的</van-tabbar-item
       >
     </van-tabbar>
-    </div>
+  </div>
 </template>
 
 <script lang='ts'>
@@ -40,9 +40,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-  // .navbar{
-  //   :deep(.van-tabbar){
-  //     height: .6533rem;
-  //   }
-  // }
+  .navbar{
+    :deep(.van-tabbar){
+      height: 1.3067rem;
+      .van-tabbar-item__icon{
+        font-size: .5867rem;
+      }
+      .van-tabbar-item__text{
+        font-size: .3733rem;
+      }
+    }
+  }
 </style>
