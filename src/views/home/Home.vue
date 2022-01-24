@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <!-- 导航栏 -->
-    <van-nav-bar fixed title="乐购" />
+    <van-nav-bar title="乐购" />
 
     <!-- 轮播 -->
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">

@@ -24,15 +24,12 @@ const request = {
   },
 
   homeGoodList(params: {type: string, page: number}, tabsData: {}) {    
-    console.log(params.type);
-    
     getHomeGoods(params).then(res => {
       const {status, data:{data}} = res
       if(status === 200) {
-        tabsData[params.type].list = data.list
+        tabsData[params.type].list = [...tabsData[params.type].list, ...data.list]
+        tabsData[params.type].page = data.page        
       }
-      console.log(tabsData);
-      
     })
   }
 }

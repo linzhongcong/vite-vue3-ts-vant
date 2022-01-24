@@ -1,14 +1,25 @@
 <template>
   <div class="good-tabs">
-    <van-tabs v-model:active="activeTabs" @click-tab="tabsClick" >
+    <van-tabs v-model:active="activeTabs" @click-tab="tabsClick" sticky title-active-color="#ff8198">
       <van-tab v-for="obj in tabsItem" :title="obj.title" :name="obj.type">
-        <div class="goods-box">
-          <div v-for="item in obj.list" class="goods-item">
-            <img :src="item.show.img" />
-            <p class="title">{{item.title}}</p>
-            <p class="price"><span class="new-price">￥{{item.price}}</span><span class="org-price">{{item.orgPrice}}</span></p>
+        <!-- 切换tabs时还没有显示数据前占位符 -->
+        <div v-if="obj.list.length <= 0" style="height: 63.3333rem;"></div>
+
+        <!-- list数据 -->
+        <van-list
+          v-model:loading="loading"
+          :finished="finished"
+          finished-text="没有更多了"
+          @load="onLoad"
+        >
+          <div class="goods-box" >
+            <van-cell v-for="item in obj.list" class="goods-item">
+              <img :src="item.show.img" />
+              <p class="title">{{item.title}}</p>
+              <p class="price"><span class="new-price">￥{{item.price}}</span><span class="org-price">{{item.orgPrice}}</span></p>
+            </van-cell>
           </div>
-        </div>
+        </van-list>
       </van-tab>
     </van-tabs>
   </div>
@@ -16,6 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, reactive } from "vue";
+import { Debounce } from '@/utils/fn'
 import Request from '../request'
 
 interface GoodsList {
@@ -47,12 +59,26 @@ export default defineComponent({
       !tabsItem[data.name].list.length && Request.homeGoodList(params, tabsItem)
     }
 
+    // ---------------------------list区域---------------------------
+    const loading = ref(false)
+    const finished = ref(false)
+    
+    const onLoad = () => {
+      loading.value && Request.homeGoodList({type: activeTabs.value, page: tabsItem[activeTabs.value].page+1}, tabsItem)
+      loading.value = false;
+    }
+    
+
     return {
       activeTabs,
       tabsItem,
 
+      loading,
+      finished,
+
       // 方法
-      tabsClick
+      tabsClick,
+      onLoad
     }
   }
 })
@@ -60,6 +86,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .good-tabs{
+  :deep(.van-tab__text--ellipsis){
+    line-height: 1.1733rem !important;
+  }
   .goods-box{
     width: 100%;
     padding: .2rem;
@@ -69,9 +98,11 @@ export default defineComponent({
     justify-content: space-between;
     .goods-item{
       width: 49%;
+      padding: 0;
       img{
         width: 4.6667rem;
         height: 6.6667rem;
+        min-height: 2.6667rem;
       }
       .title{
         font-size: .32rem;
@@ -83,7 +114,6 @@ export default defineComponent({
       .price{
         width: 100%;
         text-align: center;
-        margin: .1333rem 0;
         .new-price{
           font-size: .3733rem;
           color: #ff8198;
