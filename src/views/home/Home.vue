@@ -26,13 +26,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from "vue";
+import { defineComponent, onMounted, toRefs, ref } from "vue";
 import GoodTabs from './child-module/Good-Tabs.vue'
 import Request from './request'
 
 export default defineComponent({
   components: {GoodTabs},
   setup() {
+
     return {
       // 请求数据 - 轮播图、推荐
       ...toRefs(Request.homeGatherData()),
